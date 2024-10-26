@@ -26,6 +26,29 @@ function sum(a) {
     return currentSum;
   };
 
+  //----------------------------------------------------------------
+  // using valueOf operator
+  function sum(initial) {
+  let currentSum = initial;
+
+  function innerSum(value) {
+    currentSum += value;
+    return innerSum; // Return the inner function for chaining
+  }
+
+  // Implicit conversion to number when used in a numeric context
+  innerSum.valueOf = function() {
+    return currentSum;
+  };
+
+  return innerSum;
+}
+
+// Example usage:
+const result = sum(5)(10)(15);
+console.log(+result); // Outputs: [Function: innerSum]
+console.log(result + 0); // Outputs: 30 (using implicit conversion)
+
   return innerSum;
 }
 
