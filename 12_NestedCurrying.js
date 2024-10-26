@@ -11,7 +11,7 @@ function sum(a) {
 
 console.log(sum(9)(2)(3)(4)(5)());
 //----------------------------------------------------------------
-//using valueOf operator
+//using toString operator
 function sum(a) {
   let currentSum = a;
 
@@ -20,7 +20,8 @@ function sum(a) {
     return innerSum;
   }
 
-  // Overriding `toString` to return the accumulated sum when the function is evaluated as a string
+  // Overriding `toString` to return the accumulated sum 
+  // when the function is evaluated as a string
   innerSum.toString = function() {
     return currentSum;
   };
@@ -28,4 +29,4 @@ function sum(a) {
   return innerSum;
 }
 
-console.log(sum(9)(2)(3)(4)(5));  // Outputs: 23
+console.log(+sum(9)(2)(3)(4)(5));  // Outputs: 23
